@@ -1,0 +1,70 @@
+class Solution {
+    public int romanToInt(String s) {
+        int answer = 0;
+        while(s.length() > 0 && s.charAt(0) == 'M'){
+            answer += 1000;
+            s = s.substring(1);
+        }
+        if(s.length() > 0 && s.charAt(0) == 'D'){
+            answer += 500;
+            s = s.substring(1);
+        }
+        if(s.length() > 0 && s.charAt(0) == 'C'){
+            if(s.length() > 1 && s.substring(0, 2).equals("CM")){
+                answer += 900;
+                s = s.substring(2);
+            }
+            else if(s.length() > 1 && s.substring(0, 2).equals("CD")){
+                answer += 400;
+                s = s.substring(2);
+            }
+            else{
+                while(s.length() > 0 && s.charAt(0) == 'C'){
+                    answer += 100;
+                    s = s.substring(1);
+                }
+            }
+        }
+        if(s.length() > 0 && s.charAt(0) == 'L'){
+            answer += 50;
+            s = s.substring(1);
+        }
+        if(s.length() > 0 && s.charAt(0) == 'X'){
+            if(s.length() > 1 && s.substring(0, 2).equals("XC")){
+                answer += 90;
+                s = s.substring(2);
+            }
+            else if(s.length() > 1 && s.substring(0, 2).equals("XL")){
+                answer += 40;
+                s = s.substring(2);
+            }
+            else{
+                while(s.length() > 0 && s.charAt(0) == 'X'){
+                    answer += 10;
+                    s = s.substring(1);
+                }
+            }
+        }
+        if(s.length() > 0 && s.charAt(0) == 'V'){
+            answer += 5;
+            s = s.substring(1);
+        }
+        if(s.length() > 0 && s.charAt(0) == 'I'){
+            if(s.length() > 1 && s.substring(0, 2).equals("IX")){
+                answer += 9;
+                s = s.substring(2);
+            }
+            else if(s.length() > 1 && s.substring(0, 2).equals("IV")){
+                answer += 4;
+                s = s.substring(2);
+            }
+            else{
+                while(s.length() > 0 && s.charAt(0) == 'I'){
+                    answer += 1;
+                    s = s.substring(1);
+                }
+            }
+        }
+        return answer;
+    }
+}
