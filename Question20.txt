@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isValid(String s) {
+        boolean valid = true;
+        String stack = "";
+        while(s.length() != 0){
+            stack = stack + s.charAt(0);
+            s = s.substring(1);
+            if(stack.length() >= 2){
+                if(stack.substring(stack.length() - 2, stack.length()).equals("()") ||
+                   stack.substring(stack.length() - 2, stack.length()).equals("{}") ||
+                   stack.substring(stack.length() - 2, stack.length()).equals("[]")){
+                    stack = stack.substring(0, stack.length() - 2);
+                }
+            }
+        }
+        if(stack.length() != 0){
+            valid = false;
+        }
+        return valid;
+    }
+}
