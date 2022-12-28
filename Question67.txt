@@ -1,0 +1,31 @@
+class Solution {
+    public String addBinary(String a, String b) {
+        int i = 0;
+        int carry = 0;
+        int numA = 0, numB = 0;
+        String sum = "";
+        while((a.length() - i - 1) >= 0 || (b.length() - i - 1) >= 0){
+            numA = 0;
+            numB = 0;
+            if((a.length() - i - 1) >= 0){
+                numA = Integer.parseInt(a.substring((a.length() - i - 1), (a.length() - i)));
+            }
+            if((b.length() - i - 1) >= 0){
+                numB = Integer.parseInt(b.substring((b.length() - i - 1), (b.length() - i)));
+            }
+            int tempSum = numA + numB + carry;
+            if(tempSum > 1){
+                carry = 1;
+            }
+            else{
+                carry = 0;
+            }
+            sum = (tempSum % 2) + sum;
+            i++;
+        }
+        if(carry == 1){
+            sum = "1" + sum;
+        }
+        return sum;
+    }
+}
