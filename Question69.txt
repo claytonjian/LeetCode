@@ -1,0 +1,26 @@
+class Solution {
+    public int mySqrt(int x) {
+        long low = 0, middle = 25000, high = 50000;
+        while(low != high){
+            middle = (low + high)/2;
+            if(low * low == (long)x){
+                high = low;
+            }
+            else if(high * high == (long)x){
+                low = high;
+            }
+            else{
+                if(high * high > (long)x && middle * middle > (long)x){
+                    high = middle;
+                }
+                else{
+                    low = middle;
+                }
+                if(low + 1 == high){
+                    high = low;
+                }
+            }
+        }
+        return (int)low;
+    }
+}
